@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
 
 const Followers = () => {
-  return <h2>followers component</h2>;
+  const { followers } = useContext(GithubContext);
+
+  return (
+    <Wrapper>
+      <Scrollbars>
+        <div className='followers'>
+          {followers.map((follower, index) => {
+            const { avatar_url: img, login, html_url } = follower;
+            return (
+              <article key={index}>
+                <img src={img} alt={login} />
+                <div>
+                  <h4>{login}</h4>
+                  <a href={html_url}>{html_url}</a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </Scrollbars>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.article`
@@ -29,7 +51,6 @@ const Wrapper = styled.article`
     font-size: 1rem;
   }
   .followers {
-    overflow: scroll;
     height: 260px;
     display: grid;
     grid-template-rows: repeat(auto-fill, minmax(45px, 1fr));
