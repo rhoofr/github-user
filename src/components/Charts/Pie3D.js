@@ -24,12 +24,6 @@ const Pie3D = ({ data }) => {
         //Set the chart caption
         caption: 'Languages',
         pieRadius: '35%',
-        //Set the chart subcaption
-        subCaption: 'In MMbbl = One Million barrels',
-        //Set the x-axis name
-        xAxisName: 'Country',
-        //Set the y-axis name
-        yAxisName: 'Reserves (MMbbl)',
         //Set the theme for your chart
         theme: 'fusion'
       },
